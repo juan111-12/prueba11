@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA PARRILLA PORTEÑA — Carta Gastronómica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#fef3c7',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                        },
+                        obsidian: '#070706',
+                        cardbg: '#121110',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fffbeb 0%, #fcd34d 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 35px rgba(251, 191, 36, 0.08);
+        }
+        /* Ocultar barra de scroll en categorías */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Modal 3D */
+        .modal-3d {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+        .modal-3d.active {
+            display: flex;
+        }
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            --poster-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-stone-300 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
+
+    <header class="sticky top-0 z-40 bg-obsidian/90 backdrop-blur-md border-b border-stone-800/60 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-gold-500/30 bg-stone-900 flex items-center justify-center font-serif font-bold text-lg text-gold-400">
+                    LP
+                </div>
+                <div>
+                    <h1 class="font-serif text-lg sm:text-xl font-bold tracking-widest text-stone-100 uppercase">La Parrilla Porteña</h1>
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-medium">Carta Digital • Cocina Argentina</p>
+                </div>
+            </div>
+
+            <!-- Navegación rápida por categorías -->
+            <nav class="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-medium">
+                <a href="#hamburguesas" class="text-gold-400 hover:text-white transition-colors">Hamburguesa Estrella</a>
+            </nav>
+
+            <div class="flex items-center gap-2 text-xs text-gold-400 font-medium tracking-wider uppercase border border-gold-500/20 bg-gold-500/5 px-3 py-1.5 rounded-full">
+                <i class="fa-solid fa-utensils text-[10px]"></i> Verano 2026
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-20 flex-grow w-full">
+        
+        <!-- SECCIÓN 1: Hamburguesa Estrella Destacada -->
+        <section id="hamburguesas" class="scroll-mt-24">
+            <div class="text-center mb-6">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-400 font-semibold block mb-2">Creación Exclusiva de la Casa</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">La Hamburguesa de Autor</h2>
+                <div class="w-12 h-0.5 bg-gold-500/40 mx-auto mt-3"></div>
+            </div>
+
+            <!-- Tarjeta compacta: Producto arriba, descripción debajo -->
+            <div class="max-w-xl mx-auto bg-cardbg border border-stone-800 rounded-2xl overflow-hidden shadow-xl gold-border-glow">
+                <!-- Imagen arriba -->
+                <div class="relative h-48 sm:h-56 w-full overflow-hidden bg-stone-950">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="La Porteña Premium" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cardbg via-transparent to-transparent"></div>
+                    <div class="absolute top-3 left-3">
+                        <span class="bg-stone-950/80 backdrop-blur-md text-gold-400 border border-gold-500/30 text-[9px] font-bold tracking-widest uppercase px-2.5 py-1 rounded shadow flex items-center gap-1">
+                            <i class="fa-solid fa-fire text-[10px]"></i> 200g Carne Angus Argentina
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Detalles y descripción debajo -->
+                <div class="p-5 sm:p-6 space-y-4">
+                    <div class="flex justify-between items-start gap-3">
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-stone-100">La Porteña Premium</h3>
+                        <span class="font-serif text-xl sm:text-2xl font-bold text-gold-400">$8.500</span>
+                    </div>
+
+                    <p class="text-stone-300 text-xs sm:text-sm font-light leading-relaxed">
+                        Medallón de 200g de carne Angus Argentina madurada, pan casero tipo brioche, queso provolone argentino fundido, bacon ahumado crujiente, cebolla caramelizada con vino Malbec y chimichurri de la casa.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-stone-800">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-lg bg-stone-900 border border-stone-800 flex items-center justify-center text-gold-400 text-xs">
+                                <i class="fa-solid fa-bread-slice text-[10px]"></i>
+                            </div>
+                            <span class="text-[10px] text-stone-300 font-medium">Pan Casero Artesanal</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-lg bg-stone-900 border border-stone-800 flex items-center justify-center text-gold-400 text-xs">
+                                <i class="fa-solid fa-cheese text-[10px]"></i>
+                            </div>
+                            <span class="text-[10px] text-stone-300 font-medium">Provolone Argentino</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-stone-400 pt-2 border-t border-stone-800/60">
+                        <span><i class="fa-solid fa-wine-glass text-gold-400 mr-1"></i> Maridaje: Malbec o Cerveza Artesanal</span>
+                        <span class="bg-stone-900 px-2 py-0.5 rounded border border-stone-800 text-[10px]">Gluten, Lácteos</span>
+                    </div>
+
+                    <!-- Botón Ver en 3D -->
+                    <button onclick="open3DViewer()" class="w-full mt-4 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-stone-950 font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-gold-500/30 flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-cube text-base"></i>
+                        <span>Ver en 3D</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-950 border-t border-stone-800/60 py-10 px-4 mt-16 text-stone-500 text-xs text-center">
+        <div class="max-w-5xl mx-auto space-y-3">
+            <p class="font-serif text-base text-stone-200 font-bold tracking-widest uppercase">La Parrilla Porteña</p>
+            <p class="text-[11px] text-stone-400 max-w-md mx-auto">Carta digital de cocina argentina. Informá a nuestro personal sobre cualquier alergia o intolerancia alimentaria antes de realizar tu pedido.</p>
+            <p class="text-[10px] text-stone-400 pt-2">© 2026 La Parrilla Porteña. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Visor 3D -->
+    <div id="modal3D" class="modal-3d items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl h-[80vh] bg-cardbg border-2 border-gold-500/30 rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Header del Modal -->
+            <div class="absolute top-0 left-0 right-0 z-10 bg-obsidian/90 backdrop-blur-md border-b border-stone-800 p-4 flex items-center justify-between">
+                <div>
+                    <h3 class="font-serif text-xl font-bold text-stone-100">Vista 3D - La Porteña Premium</h3>
+                    <p class="text-xs text-stone-400 mt-1">Rotá, acercá y explorá el modelo 3D</p>
+                </div>
+                <button onclick="close3DViewer()" class="w-10 h-10 rounded-full bg-stone-900 hover:bg-gold-600 border border-stone-800 hover:border-gold-500 text-stone-300 hover:text-stone-950 transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Visor 3D -->
+            <model-viewer
+                id="viewer3d"
+                src="burger_glb.glb"
+                alt="Hamburguesa 3D"
+                auto-rotate
+                camera-controls
+                shadow-intensity="1"
+                exposure="1"
+                tone-mapping="commerce"
+                camera-orbit="45deg 75deg 2.5m"
+                min-camera-orbit="auto auto 1m"
+                max-camera-orbit="auto auto 10m"
+                style="background-color: #0a0a09;"
+                class="w-full h-full"
+                loading="eager"
+            >
+            </model-viewer>
+
+            <!-- Controles e Instrucciones -->
+            <div class="absolute bottom-4 left-4 right-4 bg-obsidian/80 backdrop-blur-md border border-stone-800 rounded-xl p-3">
+                <div class="flex flex-wrap gap-4 text-xs text-stone-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-mouse text-gold-400"></i>
+                        <span>Clic + Arrastrar para rotar</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-up-down text-gold-400"></i>
+                        <span>Scroll para zoom</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-hand text-gold-400"></i>
+                        <span>Táctil compatible</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el visor 3D
+        function open3DViewer() {
+            document.getElementById('modal3D').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar el visor 3D
+        function close3DViewer() {
+            document.getElementById('modal3D').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                close3DViewer();
+            }
+        });
+    </script>
+
+</body>
+</html>
